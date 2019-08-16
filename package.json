@@ -1,0 +1,22 @@
+{
+  "name": "rest-api-node",
+  "version": "1.0.0",
+  "description": "A Node.js RESTful API shop project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabriciobedin/rest-api-node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabriciobedin/rest-api-node/issues"
+  },
+  "homepage": "https://github.com/fabriciobedin/rest-api-node#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
