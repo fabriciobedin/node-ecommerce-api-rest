@@ -7,12 +7,16 @@ const mongoose = require("mongoose");
 const productRoutes = require("./api/routes/products");
 const orderRoutes = require("./api/routes/orders");
 
-mongoose.connect(
-  `mongodb+srv://adminmongo:${
-    process.env.MONGO_CLOUD_PW
-  }@cluster0-vzoaz.gcp.mongodb.net/shop?retryWrites=true&w=majority`,
-  { useNewUrlParser: true }
-);
+mongoose
+  .connect(
+    `mongodb+srv://adminmongo:${
+      process.env.MONGO_CLOUD_PW
+    }@cluster0-vzoaz.gcp.mongodb.net/shop?retryWrites=true&w=majority`,
+    { useNewUrlParser: true }
+  )
+  .catch(err => {
+    console.log("Database connection error!" + err);
+  });
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
