@@ -1,5 +1,6 @@
 {
   "env": {
-    "MONGO_CLOUD_PW": "TcWJFMH6yTMw5RNE"
+    "MONGO_CLOUD_PW": "TcWJFMH6yTMw5RNE",
+    "JWT_KEY": "TcWJFMHTcWJFMH6yTMw56yTMw5"
   }
 }
