@@ -1,16 +1,40 @@
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
 
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.filename);
+  }
+});
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
 const Product = require("../models/product");
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5
+  },
+  fileFilter: fileFilter
+});
 
 router.get("/", (req, res, next) => {
   Product.find()
-    .select("_id name price")
+    .select("_id name price productImage")
     .exec()
     .then(result => {
       res.status(200).json({
         count: result.length,
-        products: result
+        products: result,
+        productImage: result.productImage
       });
     })
     .catch(err => {
@@ -18,10 +42,13 @@ router.get("/", (req, res, next) => {
     });
 });
 
-router.post("/", (req, res, next) => {
+router.post("/", upload.single("productImage"), (req, res, next) => {
+  console.log(req.file);
+
   const product = new Product({
     name: req.body.name,
-    price: req.body.price
+    price: req.body.price,
+    productImage: req.file.patch
   });
   product
     .save()
