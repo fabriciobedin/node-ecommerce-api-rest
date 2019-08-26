@@ -1,8 +1,5 @@
 # Simple ecommerce API using NodeJS.
 
-## Technologies
-> nodejs, express, mongoose, bcrypt, jsonwebtoken, multer, body-parser, morgan, nodemon...
-
 ## Endpoints
 |METHOD |ENDPOINT                |DESCRIPTION                         
 |-------|------------------------|-----------------------------
@@ -20,3 +17,10 @@
 |POST   |/orders                 |create a new order
 |GET    |/orders/:orderId        |get order by order id
 |DELETE |/orders/:orderId        |remove order by order id
+
+## Technologies
+> nodejs, express, mongoose, bcrypt, jsonwebtoken, multer, body-parser, morgan, nodemon...
+
+## Commands
+> yarn install
+> yarn start
